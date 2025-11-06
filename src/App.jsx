@@ -7,7 +7,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SignUps from './pages/SignUps'
 import NotFound from './pages/NotFound'
-
+import Props from './pages/Props'
 function App() {
   return (
     <>
@@ -18,6 +18,7 @@ function App() {
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/signUps' element={<SignUps/>}/>
+        <Route path='/props' element={<Props/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </>
