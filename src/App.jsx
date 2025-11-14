@@ -1,13 +1,15 @@
 import React from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Dashboard from './pages/Dashboard'
-import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import SignUps from './pages/SignUps'
+import ProductUpload from './pages/ProductUpload'
 import NotFound from './pages/NotFound'
 import Props from './pages/Props'
+
+
 function App() {
   return (
     <>
@@ -17,8 +19,9 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/signUps' element={<SignUps/>}/>
         <Route path='/props' element={<Props/>}/>
+        <Route path='/productupload' element={<ProductUpload/>}/>
+        <Route path= '/about' element={<Navigate to='/signup'/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </>

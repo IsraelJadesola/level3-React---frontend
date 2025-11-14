@@ -1,55 +1,131 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav style={{
-      backgroundColor: '#ffffff',
-      padding: '1rem 2rem',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    }}>
-      <h3 style={{
-        margin: 0,
-        color: '#2c3e50',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-      }}>Home</h3>
+    <>
+      {/* Spacer to prevent content from going under fixed navbar */}
+      <div style={{ height: '70px' }} />
       
-      <ul style={{
-        listStyle: 'none',
-        margin: 0,
-        padding: 0,
+      <nav style={{
+        backgroundColor: isScrolled ? 'rgba(15, 23, 42, 0.95)' : 'rgba(15, 23, 42, 0.85)',
+        padding: '1rem 2rem',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0,0,0,0.2)' : 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
         display: 'flex',
-        gap: '2rem',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        transition: 'all 0.3s ease-in-out',
+        backdropFilter: 'blur(10px)',
+        height: '70px',
       }}>
-        <li><Link to="/" style={linkStyle}>Home</Link></li>
-        <li><Link to="/signup" style={linkStyle}>Signup</Link></li>
-        <li><Link to="signin" style={linkStyle}>Signin</Link></li>
-        <li><Link to="props" style={linkStyle}>Props</Link></li>
-        <li><Link to="signUps" style={linkStyle}>SignUps</Link></li>
-        <li><Link to="dashboard" style={linkStyle}>Dashboard</Link></li>
-      </ul>
-    </nav>
+        <Link to="/" style={logoStyle}>
+          <h3 style={{
+            margin: 0,
+            background: 'linear-gradient(45deg, #60A5FA, #34D399)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontSize: '2.8rem',
+            fontWeight: '800',
+            letterSpacing: '-0.5px',
+            textShadow: '0 2px 10px rgba(96, 165, 250, 0.2)',
+          }}>DevSpace</h3>
+        </Link>
+        
+        <ul style={{
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+          display: 'flex',
+          gap: '2rem',
+          alignItems: 'center',
+        }}>
+          {[
+            { path: '/', label: 'Home' },
+            { path: '/signup', label: 'Sign Up' },
+            { path: '/signin', label: 'Sign In' },
+            { path: '/props', label: 'Props' },
+            { path: '/dashboard', label: 'Dashboard' },
+            { path: '/productUpload', label: 'Product Upload' },
+          ].map((item) => (
+            <li key={item.path}>
+              <Link 
+                to={item.path} 
+                style={{
+                  ...linkBaseStyle,
+                  ...(location.pathname === item.path ? activeLink : inactiveLink)
+                }}
+              >
+                {item.label}
+                <span style={linkUnderline} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   )
 }
 
-const linkStyle = {
+const logoStyle = {
   textDecoration: 'none',
-  color: '#34495e',
-  fontWeight: '500',
-  fontSize: '1rem',
-  transition: 'color 0.3s ease',
-  padding: '0.5rem 0',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+}
+
+const linkBaseStyle = {
+  textDecoration: 'none',
+  fontSize: '1.4rem',
+  padding: '0.8rem 1.4rem',
   position: 'relative',
-  ':hover': {
-    color: '#3498db',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  borderRadius: '6px',
+  fontWeight: '600',
+  letterSpacing: '0.5px',
+}
+
+const activeLink = {
+  color: '#60A5FA',
+  backgroundColor: 'rgba(96, 165, 250, 0.15)',
+  textShadow: '0 0 20px rgba(96, 165, 250, 0.3)',
+}
+
+const inactiveLink = {
+  color: '#E2E8F0',
+  '&:hover': {
+    backgroundColor: 'rgba(226, 232, 240, 0.1)',
+    color: '#60A5FA',
   }
+}
+
+const linkUnderline = {
+  content: '""',
+  position: 'absolute',
+  bottom: '0',
+  left: '50%',
+  width: '0',
+  height: '2px',
+  backgroundColor: '#60A5FA',
+  transition: 'all 0.3s ease',
+  transform: 'translateX(-50%)',
+  boxShadow: '0 0 10px rgba(96, 165, 250, 0.5)',
 }
 
 export default Navbar
