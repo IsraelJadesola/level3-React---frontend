@@ -12,7 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,7 +21,7 @@ const Signup = () => {
     axios.post("http://localhost:3000/user/signup", userData)
       .then((res) => {
         console.log("Response:", res.data)
-        alert("signup successfully! Please login");
+        alert("signup successful! Please login");
         navigate("/signin")
       })
       .catch((err) => {
