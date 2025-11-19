@@ -33,7 +33,7 @@ const Signin = () => {
                     localStorage.setItem("user",JSON.stringify(res.data.user));
                 }
 
-                
+
                 alert("Sign in successful");
                 navigate("/dashboard")
             })
