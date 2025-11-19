@@ -18,7 +18,7 @@ const Signup = () => {
 
     let userData = { firstName, lastName, email, password }
 
-    axios.post("http://localhost:3000/user/signup", userData)
+    axios.post("https://first-backend-7x60.onrender.com/user/signup", userData)
       .then((res) => {
         console.log("Response:", res.data)
         alert("signup successful! Please login");

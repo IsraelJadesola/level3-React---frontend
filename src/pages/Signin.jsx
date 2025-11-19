@@ -12,7 +12,6 @@ const Signin = () => {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
-    cmd
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -21,7 +20,7 @@ const Signin = () => {
             password
         };
 
-        axios.post("http://localhost:3000/user/signin", userData)
+        axios.post("https://first-backend-7x60.onrender.com/user/signin", userData)
             .then((res) => {
                 console.log("Response", res.data)
                 alert("Sign in successful");
