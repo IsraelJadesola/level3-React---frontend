@@ -62,6 +62,7 @@ const Navbar = () => {
             { path: '/props', label: 'Props' },
             { path: '/dashboard', label: 'Dashboard' },
             { path: '/productUpload', label: 'Product Upload' },
+            { path: '/formik', label: 'Formik' },
           ].map((item) => (
             <li key={item.path}>
               <Link 

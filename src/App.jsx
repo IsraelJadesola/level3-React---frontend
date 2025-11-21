@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import ProductUpload from './pages/ProductUpload'
 import NotFound from './pages/NotFound'
 import Props from './pages/Props'
+import Formik from './pages/Formik'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/props' element={<Props/>}/>
         <Route path='/productupload' element={<ProductUpload/>}/>
         <Route path= '/about' element={<Navigate to='/signup'/>}/>
+        <Route  path = '/formik' element = {<Formik/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
     </>
