@@ -24,13 +24,13 @@ const Signin = () => {
             .then((res) => {
                 console.log("Response", res.data)
 
-                if(res.data.token){
+                if (res.data.token) {
                     localStorage.setItem("token", res.data.token);
                     console.log("Token stored in localStorage", res.data.token);
                 }
 
-                if(res.data.error){
-                    localStorage.setItem("user",JSON.stringify(res.data.user));
+                if (res.data.user && !res.data.error) {
+                    localStorage.setItem("user", JSON.stringify(res.data.user));
                 }
 
 
