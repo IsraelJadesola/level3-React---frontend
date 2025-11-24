@@ -1,0 +1,72 @@
+:root {
+  --bg: rgba(15, 23, 42, 0.88);
+  --muted: #cbd5e1;
+  --accent: #60a5fa;
+  --glass: rgba(255, 255, 255, 0.03);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: var(--bg);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 24px rgba(2, 6, 23, 0.35);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: transparent;
+  background: linear-gradient(45deg, #60a5fa, #34d399);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.navbar__nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease;
+}
+
+.nav-link:hover {
+  background: var(--glass);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(96, 165, 250, 0.12);
+  box-shadow: 0 8px 30px rgba(96, 165, 250, 0.06);
+}
+
+/* Ensure content doesn't hide behind fixed navbar on all pages */
+#root {
+  padding-top: 72px;
+}

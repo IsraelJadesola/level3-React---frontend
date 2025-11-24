@@ -23,10 +23,13 @@ const Signin = () => {
         axios.post("https://first-backend-7x60.onrender.com/user/signin", userData)
             .then((res) => {
                 console.log("Response", res.data)
+                console.log("All response properties:", Object.keys(res.data))
 
                 if (res.data.token) {
                     localStorage.setItem("token", res.data.token);
                     console.log("Token stored in localStorage", res.data.token);
+                } else {
+                    console.warn("No token found in response. Response:", res.data)
                 }
 
                 if (res.data.user && !res.data.error) {
