@@ -1,10 +1,11 @@
 import React from 'react'
 
 
-const Btn = ({title, color}) => {
+const Btn = ({title, color,  onClick}) => {
+
   return (
     <> 
-        <button className={`${color}`}>
+        <button className={`${color}`} onClick={onClick}>
             {title}
         </button>
     </>
