@@ -3,7 +3,7 @@ import Btn from '../components/Btn'
 import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
-  const navigate =  useNavigate()
+  const navigate = useNavigate()
 
 
   const logout = ((e) => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <>
       <div>I am the Dashboard</div>
-      <Btn title="Logout" color="btn btn-danger text-white" onClick={logout} />
+      {<Btn title="Logout" color="btn btn-danger text-white" onClick={logout} />}
 
     </>
   )
