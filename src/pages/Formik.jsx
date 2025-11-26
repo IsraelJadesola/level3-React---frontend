@@ -32,8 +32,8 @@ const Formik = () => {
     return (
         <>
         <p>{count}</p>
-        <button onClick={() => dispatch(increment())}>Increase</button>
-        <button onClick={() => dispatch(decrement())}>Increase</button>
+            <button onClick={() => dispatch(increment())}>Increase</button>
+            <button onClick={() => dispatch(decrement())}>Decrease</button>
 
             <input type="text" name="firstName" onChange={formik.handleChange} onBlur={formik.handleBlur} />
             {formik.touched.firstName && formik.errors.firstName ? <span>{formik.errors.firstName}</span> : <span>{formik.values.firstName}</span>}
