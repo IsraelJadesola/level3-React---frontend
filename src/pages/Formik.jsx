@@ -2,12 +2,13 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import {useDispatch, useSelector} from 'react-redux'
-import { decrement } from '../redux/counterSlice'
+import { decrement, increment } from '../redux/counterSlice'
 
 
 const Formik = () => {
     let count = useSelector((state) => state.counterReducer.counter)
     let dispatch = useDispatch()
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -32,8 +33,12 @@ const Formik = () => {
     return (
         <>
         <p>{count}</p>
-            {/* <button onClick={() => dispatch(increment())}>Increase</button> */}
+            <button onClick={() => dispatch(increment())}>Increase</button>
             <button onClick={() => dispatch(decrement())}>Decrease</button>
+
+            <button>Yessss</button>
+            <button>Yessss</button>
+            <button>Yessss</button>
 
             <input type="text" name="firstName" onChange={formik.handleChange} onBlur={formik.handleBlur} />
             {formik.touched.firstName && formik.errors.firstName ? <span>{formik.errors.firstName}</span> : <span>{formik.values.firstName}</span>}
