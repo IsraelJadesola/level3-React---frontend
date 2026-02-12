@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { configureStore } from '@reduxjs/toolkit'
-import { counterReducer } from './redux/counterSlice.js'
+import counterReducer  from './redux/counterSlice.js'
 import { Provider } from 'react-redux'
 
 let store = configureStore({
@@ -14,9 +14,9 @@ let store = configureStore({
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
     </BrowserRouter>
   </StrictMode>,
 )

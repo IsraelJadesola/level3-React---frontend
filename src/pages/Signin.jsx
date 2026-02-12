@@ -42,7 +42,7 @@ const Signin = () => {
             })
             .catch((err) => {
                 console.log("Error", err.response ? err.response.data : err)
-                alert("Signup failed")
+                alert("Signin failed")
             })
         console.log(userData)
     }
